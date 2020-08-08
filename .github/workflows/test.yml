@@ -29,19 +29,16 @@ jobs:
 
     steps:
       - uses: 'actions/checkout@v2'
-      - uses: 'actions/checkout@v2'
-        with:
-          repository: thinca/vim-themis
-          path: vim-themis
       - name: 'Setup Vim'
         id: 'vim'
         uses: 'thinca/action-setup-vim@v1'
         with:
           vim_version: '${{ matrix.vim_version }}'
           download: '${{ matrix.download }}'
-      - name: 'Show Vim version'
-        run: |
-          ${{ steps.vim.outputs.executable }} --version
+      - uses: 'actions/checkout@v2'
+        with:
+          repository: thinca/vim-themis
+          path: vim-themis
       - name: 'Run tests'
         env:
           THEMIS_VIM: ${{ steps.vim.outputs.executable }}
