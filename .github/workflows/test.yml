@@ -3,7 +3,7 @@ on: ['push', 'pull_request']
 
 jobs:
   test:
-    name: '${{ (matrix.neovim && "Neovim") || "Vim" }} ${{ matrix.version }} on ${{ matrix.os }}'
+    name: "${{ (matrix.neovim && 'Neovim') || 'Vim' }} ${{ matrix.version }} on ${{ matrix.os }}"
     strategy:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
